@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
+import { Container } from "react-bootstrap";
 
 const DaysComponent = (props) => {
   const [detailNextDays, setDetailNextDays] = useState(null);
@@ -26,22 +27,24 @@ const DaysComponent = (props) => {
   }, []);
   return (
     detailNextDays && (
-      <Row className="g-4">
-        {detailNextDays.list.map((e, index) => {
-          return (
-            <Col xs={12} md={4} lg={4} key={index} className="px-5">
-              <Card className="bg-dark text-white fs-5">
-                <Card.Header>{e.dt_txt}</Card.Header>
+      <Container>
+        <Row className="g-4 mb-3">
+          {detailNextDays.list.map((e, index) => {
+            return (
+              <Col xs={12} md={4} lg={4} key={index} className="px-5">
+                <Card className="bg-dark text-white fs-5">
+                  <Card.Header>{e.dt_txt}</Card.Header>
 
-                <div>
-                  <p>{e.main.temp}&deg;C </p>
-                  <p>{e.weather[0].main}</p>
-                </div>
-              </Card>
-            </Col>
-          );
-        })}
-      </Row>
+                  <div>
+                    <p className="">{e.main.temp}&deg;C </p>
+                    <p>{e.weather[0].main}</p>
+                  </div>
+                </Card>
+              </Col>
+            );
+          })}
+        </Row>
+      </Container>
     )
   );
 };

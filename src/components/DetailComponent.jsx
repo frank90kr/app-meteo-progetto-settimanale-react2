@@ -24,7 +24,6 @@ const DetailComponent = (props) => {
 
   useEffect(() => {
     fetchDetailWeather();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -33,9 +32,8 @@ const DetailComponent = (props) => {
         <Row>
           <Col xs={10} lg={12}>
             <ListGroup className="my-1 mb-5">
-              <ListGroup.Item className="bg-dark text-white fs-4">
-                <p>{detailWeather.name}</p>
-              </ListGroup.Item>
+              <p className="fs-2 fw-semibold">{detailWeather.name}</p>
+
               {detailWeather.weather.map((e) => {
                 return (
                   <ListGroup.Item key={e.id}>
@@ -43,9 +41,9 @@ const DetailComponent = (props) => {
                   </ListGroup.Item>
                 );
               })}
-              <ListGroup.Item>{detailWeather.main.temp} &deg;C</ListGroup.Item>
+              <ListGroup.Item variant="dark">{detailWeather.main.temp} &deg;C</ListGroup.Item>
               <ListGroup.Item>Feels like: {detailWeather.main.feels_like}&deg;C</ListGroup.Item>
-              <ListGroup.Item>Humidity: {detailWeather.main.humidity}</ListGroup.Item>
+              <ListGroup.Item variant="dark">Humidity: {detailWeather.main.humidity}</ListGroup.Item>
             </ListGroup>
           </Col>
         </Row>
